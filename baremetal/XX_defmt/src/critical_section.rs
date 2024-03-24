@@ -13,7 +13,7 @@ mod no_std {
             // TODO
         }
 
-        unsafe fn release(token: RawRestoreState) {
+        unsafe fn release(_token: RawRestoreState) {
             // TODO
         }
     }

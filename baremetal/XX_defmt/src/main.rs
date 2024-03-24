@@ -25,7 +25,7 @@ fn panic(_info: &PanicInfo) -> ! {
     }
 }
 
-fn nop_delay(_count: u64) {
+fn nop_delay(count: u64) {
     for _i in 0..count {
         unsafe {
             asm!("nop");
