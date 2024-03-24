@@ -1,0 +1,10 @@
+# ref: https://tomo-wait-for-it-yuki.hatenablog.com/entry/2018/11/10/220125
+[target.aarch64-unknown-none]
+linker = "aarch64-elf-ld"
+rustflags = ["-C", "link-arg=-Tldscript.lds"]
+
+[build]
+target = "aarch64-unknown-none"
+
+[env]
+DEFMT_LOG = "trace"

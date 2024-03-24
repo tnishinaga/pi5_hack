@@ -1,0 +1,20 @@
+[package]
+edition = "2021"
+name = "jtag_kernel"
+version = "0.1.0"
+rust-version = "1.75"
+
+[build-dependencies]
+cc = "1.0.83"
+
+[dependencies]
+
+
+# https://github.com/rp-rs/rp2040-project-template/blob/main/Cargo.toml
+[profile.dev]
+codegen-units = 1
+debug = 2
+debug-assertions = true
+incremental = false
+opt-level = 3
+overflow-checks = true

@@ -1,0 +1,10 @@
+set architecture aarch64
+set history save on
+set confirm off
+set height 0
+set remotetimeout 60
+target extended-remote :1337
+set print asm-demangle on
+display/i $pc
+load
+set height 20
