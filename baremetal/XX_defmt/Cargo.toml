@@ -1,6 +1,6 @@
 [package]
 edition = "2021"
-name = "baremetal_pi5_defmt"
+name = "jtag_kernel"
 version = "0.1.0"
 rust-version = "1.75"
 
@@ -23,3 +23,8 @@ debug-assertions = true
 incremental = false
 opt-level = 0
 overflow-checks = true
+
+[profile.release]
+codegen-units = 1
+debug = true
+opt-level = "s"
