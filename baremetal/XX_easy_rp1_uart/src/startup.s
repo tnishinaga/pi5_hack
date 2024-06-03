@@ -7,6 +7,9 @@
 _start:
     # mov x0, #0
     # cbz x0, _start
+
+    dsb sy
+    isb
     // Exception Level 2
     // disable all interrupt
     msr daifclr, #0
@@ -25,6 +28,7 @@ clear_bss_loop:
 clear_bss_end:
     bl main
 loop:
+    dsb sy
     wfe
     b loop
 

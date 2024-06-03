@@ -1,3 +1,5 @@
+use core::arch::asm;
+
 use tock_registers::{
     interfaces::{ReadWriteable, Readable, Writeable},
     register_bitfields, register_structs,
@@ -105,7 +107,11 @@ impl Pl011Uart {
 
     pub fn disable(&self) {
         self.uart.control.modify(Control::UARTEN::CLEAR);
-        // TODO: wait for end of transmission
+        // wait for end transmit
+        while self.uart.flag.is_set(Flag::BUSY) {
+            unsafe { asm!("nop") }
+        }
+
         // flush FIFO
         self.uart
             .line_control_h

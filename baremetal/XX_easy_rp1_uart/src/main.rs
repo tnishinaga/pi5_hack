@@ -19,8 +19,6 @@ use core::{
     panic::PanicInfo,
     time,
 };
-use defmt::debug;
-use defmt_rtt as _;
 use pl011_uart::{Pl011Uart, Pl011UartPeripheral};
 use rp1_gpio::RP1Gpio;
 use systimer::wait;
@@ -34,6 +32,7 @@ use tock_registers::{
 // https://doc.rust-lang.org/nomicon/panic-handler.html
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
+    unsafe { asm!("dsb sy") };
     loop {
         unsafe { asm!("wfe") };
     }
@@ -62,11 +61,8 @@ fn main() -> ! {
     rp1_gpio.set_output_enable(14, true);
     rp1_gpio.set_output_enable(15, true);
 
-    let mut loop_count = 0;
     loop {
-        pl011_uart.write(&[b'A']);
-        debug!("Hello world! {}", loop_count);
+        pl011_uart.write(&"HOGEHOGE\n".as_bytes());
         wait(time::Duration::from_secs(1));
-        loop_count += 1;
     }
 }

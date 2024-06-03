@@ -4,9 +4,9 @@ all: build jtag_kernel.bin
 
 .PHONY: jtag_kernel.bin
 build:
-	cargo build
+	cargo build --release
 
 .PHONY: jtag_kernel.bin
 
 jtag_kernel.bin: build
-	$(OBJCOPY) --bin jtag_kernel -- -O binary ./target/jtag_kernel.bin
+	$(OBJCOPY) --release --bin jtag_kernel -- -O binary ./target/jtag_kernel.bin
