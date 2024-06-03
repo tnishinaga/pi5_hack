@@ -4,8 +4,8 @@ ENTRY(_start)
 
 SECTIONS
 {
-    . = 0x80000;
-    .text.boot : ALIGN(4) { 
+    . = 0x200000;
+    .text.boot : ALIGN(8) { 
         *(.text.boot) 
     }
     .text : ALIGN(8) {
