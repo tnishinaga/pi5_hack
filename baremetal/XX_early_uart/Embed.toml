@@ -1,0 +1,20 @@
+[default.general]
+chip = "RaspberryPi5B"
+
+[default.probe]
+protocol = "Swd"
+speed = 1000
+
+
+[default.flashing]
+enabled = false
+
+[default.reset]
+enabled = false
+
+[default.rtt]
+timeout = 180000 # 3 min
+enabled = true
+
+[default.gdb]
+enabled = true

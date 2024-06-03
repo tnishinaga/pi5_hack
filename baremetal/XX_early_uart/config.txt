@@ -1,0 +1,10 @@
+arm_64bit=1
+
+[all]
+# disable PCIe reset on firmware exit
+# to access RP1 from baremetal without PCIe drivers
+# ref: https://forums.raspberrypi.com/viewtopic.php?p=2159255#p2159255
+pciex4_reset=0
+
+kernel=jtag_kernel.bin
+enable_jtag_gpio=1
