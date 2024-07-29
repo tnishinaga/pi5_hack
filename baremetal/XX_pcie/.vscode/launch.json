@@ -1,0 +1,37 @@
+// The format of this file is specified in https://probe.rs/docs/tools/vscode/#start-a-debug-session-with-minimum-configuration
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // deprecated: using probe-rs-debug to make the timer0 behave incorrectly
+            "preLaunchTask": "rust: cargo run",
+            "type": "probe-rs-debug",
+            "request": "attach",
+            "name": "probe-rs-debug",
+            "cwd": "${workspaceRoot}",
+            "speed": 1000,
+            "chip": "RaspberryPi5B",
+            "probe": "15ba:002a",
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "${workspaceRoot}/target/aarch64-unknown-none/debug/baremetal_pi5_pcie",
+                    "chip": "RaspberryPi5B",
+                    "rttEnabled": true,
+                    "options": {
+                        "env": {
+                            "DEFMT_LOG": "trace",
+                            "RUST_LOG": "trace"
+                        }
+                    },
+                }
+            ],
+            "env": {
+                "DEFMT_LOG": "trace",
+                "RUST_LOG": "trace"
+            },
+            "consoleLogLevel": "Debug",
+            "wireProtocol": "Swd"
+        },
+    ]
+}

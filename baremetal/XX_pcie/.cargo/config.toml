@@ -1,0 +1,22 @@
+# ref: https://tomo-wait-for-it-yuki.hatenablog.com/entry/2018/11/10/220125
+[target.aarch64-unknown-none]
+linker = "aarch64-linux-gnu-ld"
+
+rustflags = [
+    "-C",
+    "link-arg=-Tldscript.lds",
+    "-C",
+    "link-arg=--nmagic",
+    "-C",
+    "link-arg=-Tdefmt.x",
+    "-C",
+    "link-arg=-Map=kernel.map",
+]
+
+runner = "./debug_run.sh"
+
+[build]
+target = "aarch64-unknown-none"
+
+[env]
+DEFMT_LOG = "trace"
